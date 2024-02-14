@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Table } from "antd";
 import "./styles/styles.css";
 
@@ -85,9 +86,11 @@ const data = [
 ];
 
 const PatientTable = ({ props }) => {
-  console.log(props);
+  console.log(JSON.stringify(props, undefined, 2));
+
   const getRowClassName = (record) => {
-    if (props.id.includes(record.bed_no)) {
+    console.log("record", props.data[parseInt(record.key)]);
+    if (props.data[parseInt(record.key) - 1].result === "c") {
       return "row-color-red";
     } else {
       return "row-color-white";
